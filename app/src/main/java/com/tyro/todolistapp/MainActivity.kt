@@ -8,12 +8,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.tyro.todolistapp.data.Graph
+import com.tyro.todolistapp.screens.Navigation
 import com.tyro.todolistapp.screens.TodoListScreen
 import com.tyro.todolistapp.ui.theme.TodoListAppTheme
 import com.tyro.todolistapp.viewModel.TodoViewModel
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
         Graph.provide(applicationContext)
         enableEdgeToEdge()
         setContent {
-            TodoListScreen(viewModel = TodoViewModel())
+            Navigation()
 //            TodoListAppTheme {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    Greeting(

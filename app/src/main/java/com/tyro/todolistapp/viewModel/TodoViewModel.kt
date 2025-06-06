@@ -1,5 +1,8 @@
 package com.tyro.todolistapp.viewModel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tyro.todolistapp.data.Graph
@@ -23,6 +26,18 @@ class TodoViewModel(
 //        }
 //    }
 
+
+    var todoTitleState by mutableStateOf("")
+    var todoDescriptionState by mutableStateOf("")
+
+    fun onTodoTitleChanged(newString: String){
+        todoTitleState = newString
+    }
+
+    fun onTodoDescriptionChange(newString: String){
+        todoDescriptionState = newString
+    }
+
     val getAllTodos: Flow<List<Todo>> = todoRepository.getTodos()
 
 
@@ -32,8 +47,14 @@ class TodoViewModel(
         }
     }
 
+    fun toggleTodo(id: Long){
+        viewModelScope.launch(Dispatchers.IO){
+            todoRepository.toggleIsCompleted(id)
+        }
+    }
 
-    fun updtateTodo(todo: Todo){
+
+    fun updateTodo(todo: Todo){
         viewModelScope.launch(Dispatchers.IO) {
             todoRepository.updateTodo(todo)
         }

@@ -65,4 +65,8 @@ dependencies {
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)
+
+    implementation(libs.androidx.navigation.compose)
+    implementation("androidx.compose.animation:animation:1.8.2") // or your latest version
+
 }
