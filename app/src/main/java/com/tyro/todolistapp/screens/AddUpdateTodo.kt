@@ -25,6 +25,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -78,9 +79,11 @@ fun AddUpdateTodo(viewModel: TodoViewModel, navController: NavController, todoId
 //        }
 //    }
 
-    Scaffold(modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding(),
+    Scaffold(modifier = Modifier.fillMaxSize().navigationBarsPadding(),
         topBar = {
-            TopAppBar(title = { Text(if(todoId == 0L)"Add New Todo" else "Update Todo", fontWeight = FontWeight.SemiBold) },
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = colorResource(id = R.color.purple_200)),
+                title = { Text(if(todoId == 0L)"Add New Todo" else "Update Todo", fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = {navController.navigateUp()}) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")

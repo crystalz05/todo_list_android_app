@@ -42,6 +42,7 @@ import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
@@ -115,9 +116,11 @@ fun TodoListScreen(navController: NavController, viewModel: TodoViewModel) {
             }
         }
     ) {
-        Scaffold(modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding(),
+        Scaffold(modifier = Modifier.fillMaxSize().navigationBarsPadding(),
             topBar = {
-                TopAppBar(title = { Text("Plan", fontWeight = FontWeight.SemiBold) },
+                TopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor =colorResource(id = R.color.purple_200)),
+                    title = { Text("Plan", fontWeight = FontWeight.SemiBold) },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
